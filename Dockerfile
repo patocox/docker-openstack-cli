@@ -9,6 +9,7 @@ RUN apt-get -qqy update && \
 RUN git clone https://github.com/krishnasrinivas/wetty.git
 WORKDIR /wetty
 RUN npm install && \
+ apt-get install -y vim && \
  useradd -d /home/term -m -s /bin/bash term && \
  echo 'term:term' | chpasswd
 
@@ -27,7 +28,9 @@ RUN apt-get update && \
  apt-get install -y python-ceilometerclient && \
  apt-get install -y python-neutronclient
 
+ADD config /tmp/config
+RUN chmod +x /tmp/config
+
 EXPOSE 3000
 
-ENTRYPOINT ["node"]
-CMD ["app.js", "-p", "3000"]
+CMD ["bash","/tmp/config"]
