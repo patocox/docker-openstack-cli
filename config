@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Add variables
+echo "export OS_AUTH_URL=$OS_AUTH_URL" >> /home/term/.bashrc
+echo "export OS_REGION_NAME=$OS_REGION_NAME" >> /home/term/.bashrc
+echo "export OS_TENANT_NAME=$OS_TENANT_NAME" >> /home/term/.bashrc
+echo "export OS_USERNAME=$OS_USERNAME" >> /home/term/.bashrc
+echo "export OS_PASSWORD=$OS_PASSWORD" >> /home/term/.bashrc
+
+#Start Wetty
+node app.js -p 3000
